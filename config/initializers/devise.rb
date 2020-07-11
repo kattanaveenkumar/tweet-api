@@ -309,13 +309,29 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
   config.jwt do |jwt|
-  jwt.secret = ENV['DEVISE_SECRET_KEY']
+  jwt.secret = "7dd5478668a370e361554a3e3e2ceadf19360610261b84947c74f68d329f8b099d4bae8b88eda25ce79b2f68f94a248f066804daf0057c16c786a9f108fda500"
   jwt.dispatch_requests = [
       ['POST', %r{^/login$}]
     ]
     jwt.revocation_requests = [
       ['DELETE', %r{^/logout$}]
     ]
-  jwt.expiration_time = 5.minutes.to_i
+  jwt.expiration_time = 55.minutes.to_i
 end
 end
+
+# t:3000/login
+# HTTP/1.1 200 OK
+# X-Frame-Options: SAMEORIGIN
+# X-XSS-Protection: 1; mode=block
+# X-Content-Type-Options: nosniff
+# X-Download-Options: noopen
+# X-Permitted-Cross-Domain-Policies: none
+# Referrer-Policy: strict-origin-when-cross-origin
+# Content-Type: application/json; charset=utf-8
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTk0NDY5MTM5LCJleHAiOjE1OTQ0Njk0MzksImp0aSI6IjgwMGRhNGZhLTA0MWEtNDJkYy05ZjUwLWYwYThkMGUzYjY0YSJ9.2JeU_rq8O9g9EbLKTk6uSmoi_q-q8suJiqbbFttH2b4
+# ETag: W/"aca35831869026ddeeac4048beb963c8"
+# Cache-Control: max-age=0, private, must-revalidate
+# X-Request-Id: b571feb9-5380-4eb2-a2c0-da5a5151f7dc
+# X-Runtime: 0.566812
+# Transfer-Encoding: chunked
